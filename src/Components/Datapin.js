@@ -56,26 +56,26 @@ const Datapin = () => {
     return (
         <div className="container my-3">
             <form onSubmit={submitForm}> 
-                <label htmlFor="pincode" className="label">Enter a 6-digit pincode:</label>
+                <label htmlFor="pincode" className="label m-3">Enter a 6-digit pincode:</label>
                 <input
                     type="text"
                     id="pincode"
                     value={pincode}
                     onChange={(e) => setPincode(e.target.value)}
-                    className="form-control"
+                    className="form-control in12345"
                     placeholder="Enter Pincode"
                 />
-                <button className="btn btn-dark my-3" type="submit">Lookup</button>
+                <button className="btn btn-dark my-3 bt12345" type="submit">Lookup</button>
             </form>
-            {loading && <div className="spinner-border text-danger" role="status">
+            {loading && <div className=" spinner-border text-danger lds-heart lds-hourglass" role="status"><div></div>
                 <span className="visually-hidden">Loading.....</span>
             </div>}
             {error && <div className="error text-danger">{error}</div>}
             {data.length > 0  && (
                 <div >
                     <div className="postCard">
-                        <h4>Pincode : {pincode}</h4>
-                        <h4>{message.Message}</h4>
+                        <h4>Pincode :  <span style={{color:"red"}}>{pincode}</span></h4>
+                        <h4 style={{color: "blue"}}>{message.Message}</h4>
                     </div>
                     <label htmlFor="filter" className="label my-2">Filter by post office name:</label>
                     <input
@@ -85,19 +85,20 @@ const Datapin = () => {
                         className="form-control my-2"
                         placeholder="Filter"
                         onChange={handleFilterChange}
+                        style={{boxShadow: "rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px"}}
                     />
                     {filteredData.length > 0 ? (
-                        <div className="row">
+                        <div className="row" style={{justifyContent: "space-between"}}>
                             {filteredData.map((pincode) => (
                                 <div className='col-md-4 my-3 postCard'>
                                     <div className='card border border-primary'>
                                         <h5 className='card-title text-center my-2'>Pincode Details</h5>
                                         <div className='card-body'>
-                                            <p>Name : {pincode.Name}</p>
-                                            <p>Branch Type : {pincode.BranchType}</p>
-                                            <p>Deleviry Ststus : {pincode.DeliveryStatus}</p>
-                                            <p>District : {pincode.District}</p>
-                                            <p>Division : {pincode.Division}</p>
+                                            <p> Post Office Name : <span style={{color:"red"}}>{pincode.Name}</span> </p>
+                                            <p >Pincode : <span style={{color:"red"}}> {pincode.Pincode}</span></p>
+                                            <p>Deleviry Ststus : <span style={{color:"red"}}> {pincode.DeliveryStatus}</span></p>
+                                            <p>District : <span style={{color:"red"}}>{pincode.District}</span></p>
+                                            <p>State : <span style={{color:"red"}}>{pincode.State}</span></p>
                                         </div>
                                     </div>
                                 </div>
