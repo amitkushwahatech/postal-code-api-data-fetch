@@ -45,13 +45,6 @@ const PostData = () => {
                  </div>
             )
            })}
-
-        PostData
-        <h1>Post Office Name :  </h1>
-        <h3>Pincode : </h3>
-        <h3>District : </h3>
-        <h3>State : </h3>
-
     </div>
     </div>
   )
